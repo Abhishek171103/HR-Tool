@@ -1,54 +1,50 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { columns, AttendanceHelper } from '../../utils/AttendanceHelper';
 import DataTable from 'react-data-table-component';
 import axios from 'axios';
 
-const Attandance = () => {
+const Attendance = () => {
   const [attendance, setAttendance] = useState([]);
   const [loading, setLoading] = useState(false);
   const [filteredAttendance, setFilteredAttendance] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const statusChange = () => {
+  useEffect(() => {
     fetchAttendance();
-  };
+    return () => setAttendance([]); 
+  }, []);
 
   const fetchAttendance = async () => {
     setLoading(true);
-    let sno = 1;
     try {
       const response = await axios.get(`https://hr-tool-716p.onrender.com/api/attendance`, {
-        headers: {
-          "Authorization": `Bearer ${localStorage.getItem('token')}`
-        }
+        headers: { "Authorization": `Bearer ${localStorage.getItem('token')}` }
       });
-      if (response.data.success) {
+
+      if (response.data.success && Array.isArray(response.data.attendance)) {
         const data = response.data.attendance
-          .filter(att => att.employeeId) // Remove records with no employee data
-          .map((att, index) => {
-            return {
-              employeeId: att.employeeId.employeeId,
-              sno: index + 1,
-              department: att.employeeId.department?.dep_name,
-              name: att.employeeId.userId?.name,
-              action: (
-                <AttendanceHelper
-                  status={att.status}
-                  employeeId={att.employeeId.employeeId}
-                  statusChange={statusChange}
-                />
-              )
-            };
-          });
+          .map((att, index) => ({
+            employeeId: att.employeeId?.employeeId || "N/A",
+            sno: index + 1,
+            department: att.employeeId?.department?.dep_name || "N/A",
+            name: att.employeeId?.userId?.name || "N/A",
+            action: att.employeeId ? (
+              <AttendanceHelper 
+                status={att.status} 
+                employeeId={att.employeeId.employeeId} 
+                statusChange={fetchAttendance} 
+              />
+            ) : null
+          }))
+          .filter(record => record.employeeId !== "N/A");
+
         setAttendance(data);
         setFilteredAttendance(data);
-        setFilteredAttendance(data);
       } else {
-        console.warn("Data not received:", response.data);
+        console.warn("No attendance data found:", response.data);
       }
     } catch (error) {
-      console.error("Error fetching attendance:", error);
       console.error("Error fetching attendance:", error);
       alert(error.response?.data?.error || "Server Error!");
     } finally {
@@ -56,20 +52,15 @@ const Attandance = () => {
     }
   };
 
-
   const handleFilter = (e) => {
-    const searchValue = e.target.value.toLowerCase();
-    setSearchTerm(searchValue); // Update search term state
-    const records = attendance.filter((emp) =>
-      emp.department.toLowerCase().includes(searchValue)
-    );
-    setFilteredAttendance(records);
-  };
-  
+    const term = e.target.value.toLowerCase();
+    setSearchTerm(term);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+    const filteredRecords = attendance.filter(emp =>
+      emp.department.toLowerCase().includes(term) || emp.name.toLowerCase().includes(term)
+    );
+    setFilteredAttendance(filteredRecords);
+  };
 
   return (
     <div>
@@ -83,10 +74,8 @@ const Attandance = () => {
           onChange={handleFilter}
         />
         <p className='text-2xl'>
-          Mark Employee for{" "}
-          <span className='font-bold underline'>
-            {new Date().toISOString().split("T")[0]}
-          </span>
+          Mark Employee for 
+          <span className='font-bold underline'> {new Date().toISOString().split("T")[0]}</span>
         </p>
         <Link
           to="/admin-dashboard/attandanceReport"
@@ -106,4 +95,4 @@ const Attandance = () => {
   );
 };
 
-export default Attandance;
+export default Attendance;
