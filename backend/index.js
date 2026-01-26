@@ -12,7 +12,6 @@ import dashboardRoute from './routes/dashboard.js'
 import attendanceRoute from './routes/attendance.js'
 
 dotenv.config();
-connectDB();
 const app = express();
 
 app.use(
@@ -24,7 +23,9 @@ app.use(
     })
 );
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public/uploads'));
+
 app.use('/api/auth', authRouter);
 app.use('/api/department', departmentRoute);
 app.use('/api/employee', employeeRoute);
@@ -34,7 +35,7 @@ app.use('/api/setting', settingRoute);
 app.use('/api/dashboard', dashboardRoute);
 app.use('/api/attendance', attendanceRoute);
 
-
+connectDB();
 app.listen(process.env.PORT, () => {
     console.log(`🚀 Server is running on port ${process.env.PORT}`);
 });
