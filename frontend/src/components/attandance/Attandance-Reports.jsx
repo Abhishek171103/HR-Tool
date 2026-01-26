@@ -19,7 +19,7 @@ const AttendanceReports = () => {
 
     try {
       const response = await axios.get(
-        `https://employee-mg-server.onrender.com/api/attendance/report?${query.toString()}`,
+        `https://hr-tool-716p.onrender.com/api/attendance/report?${query.toString()}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

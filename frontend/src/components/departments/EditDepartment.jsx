@@ -18,7 +18,7 @@ const EditDepartment = () => {
             setLoading(true);
             // const BASE_URL = import.meta.env.VITE_BASE_URL;
             try {
-                const response = await axios.get(`https://employee-mg-server.onrender.com/api/department/${id}`, {
+                const response = await axios.get(`https://hr-tool-716p.onrender.com/api/department/${id}`, {
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem('token')}`
                     }
@@ -40,7 +40,7 @@ const EditDepartment = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();  // Fixed: now e is defined
         try {
-            const response = await axios.put(`https://employee-mg-server.onrender.com/api/department/${id}`, department, {
+            const response = await axios.put(`https://hr-tool-716p.onrender.com/api/department/${id}`, department, {
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem('token')}`
                 }

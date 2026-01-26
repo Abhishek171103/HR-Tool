@@ -6,14 +6,14 @@ const LeaveDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [leave, setLeave] = useState(null);
-  // const STATIC_URL = "https://employee-mg-server.onrender.com/"
+  // const STATIC_URL = "https://hr-tool-716p.onrender.com/"
 
 
   useEffect(() => {
     // const BASE_URL = import.meta.env.VITE_BASE_URL;
     const fetchLeave = async () => {
       try {
-        const response = await axios.get(`https://employee-mg-server.onrender.com/api/leave/detail/${id}`, {
+        const response = await axios.get(`https://hr-tool-716p.onrender.com/api/leave/detail/${id}`, {
           headers: {
             "Authorization": `Bearer ${localStorage.getItem('token')}`
           }
@@ -34,7 +34,7 @@ const LeaveDetails = () => {
 
   const changeStatus = async (id, status) => {
     try {
-      const response = await axios.put(`https://employee-mg-server.onrender.com/api/leave/${id}`, { status }, {
+      const response = await axios.put(`https://hr-tool-716p.onrender.com/api/leave/${id}`, { status }, {
         headers: {
           "Authorization": `Bearer ${localStorage.getItem('token')}`
         }
@@ -48,7 +48,7 @@ const LeaveDetails = () => {
       alert(error.response?.data?.error || "Server Error!");
     }
   }
-  // https://employee-mg-server.onrender.com/${emp.userId.profileImage}
+  // https://hr-tool-716p.onrender.com/${emp.userId.profileImage}
   return (
     <>
       {leave ? (
@@ -58,7 +58,7 @@ const LeaveDetails = () => {
             {/* Left Side - Profile Image */}
             <div className="relative w-40 h-40 md:w-56 md:h-56 mr-0 md:mr-8 mb-4 md:mb-0">
               <img
-                src={`https://employee-mg-server.onrender.com/${leave.employeeId.userId.profileImage}`}
+                src={`https://hr-tool-716p.onrender.com/${leave.employeeId.userId.profileImage}`}
                 alt="Profile-Image"
                 className="w-full h-full rounded-full object-cover"
               />

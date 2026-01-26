@@ -27,7 +27,7 @@ const AuthContext = ({ children }) => {
         try {
           const refreshToken = localStorage.getItem("refreshToken");
           // Call the refresh endpoint with the refresh token
-          const response = await axios.post(`https://employee-mg-server.onrender.com/api/auth/refresh`, { refreshToken });
+          const response = await axios.post(`https://hr-tool-716p.onrender.com/api/auth/refresh`, { refreshToken });
           // Save the new access token
           localStorage.setItem("token", response.data.accessToken);
           // Update the header and retry the original request
@@ -48,7 +48,7 @@ const AuthContext = ({ children }) => {
     try {
       const token = localStorage.getItem("token");
       if (token) {
-        const response = await axiosInstance.get(`https://employee-mg-server.onrender.com/api/auth/verify`, {
+        const response = await axiosInstance.get(`https://hr-tool-716p.onrender.com/api/auth/verify`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         // console.log("Verify response:", response.data); // Debug log

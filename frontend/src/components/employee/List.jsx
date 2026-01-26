@@ -15,7 +15,7 @@ const List = () => {
       let sno = 1;
       // const BASE_URL = import.meta.env.VITE_BASE_URL;
       try {
-        const response = await axios.get(`https://employee-mg-server.onrender.com/api/employee`, {
+        const response = await axios.get(`https://hr-tool-716p.onrender.com/api/employee`, {
           headers: {
             "Authorization": `Bearer ${localStorage.getItem('token')}`
           }
@@ -28,7 +28,7 @@ const List = () => {
             dep_name: emp.department.dep_name,
             name: emp.userId.name,
             dob: new Date(emp.dob).toLocaleDateString(),
-            profileImage: <img src={`https://employee-mg-server.onrender.com/${emp.userId.profileImage}`} className="w-10 h-10 rounded-full" />,
+            profileImage: <img src={`https://hr-tool-716p.onrender.com/${emp.userId.profileImage}`} className="w-10 h-10 rounded-full" />,
             action: (<EmployeeButtons Id={emp._id} />)
           }));
           setEmployees(data); 

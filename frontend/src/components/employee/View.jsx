@@ -5,12 +5,12 @@ import { useParams } from 'react-router-dom';
 const View = () => {
   const { id } = useParams();
   const [employee, setEmployee] = useState(null);
-  //  const STATIC_URL = "https://employee-mg-server.onrender.com/"
+  //  const STATIC_URL = "https://hr-tool-716p.onrender.com/"
 
   useEffect(() => {
     const fetchEmployee = async () => {
       try {
-        const response = await axios.get(`https://employee-mg-server.onrender.com/api/employee/${id}`, {
+        const response = await axios.get(`https://hr-tool-716p.onrender.com/api/employee/${id}`, {
           headers: {
             "Authorization": `Bearer ${localStorage.getItem('token')}`
           }
@@ -36,7 +36,7 @@ const View = () => {
             {/* Left Side - Profile Image */}
             <div className="relative w-40 h-40 md:w-56 md:h-56 mr-0 md:mr-8 mb-4 md:mb-0">
               <img
-                src={`https://employee-mg-server.onrender.com/${employee?.userId?.profileImage}`}
+                src={`https://hr-tool-716p.onrender.com/${employee?.userId?.profileImage}`}
                 alt="Profile-Image"
                 className="w-full h-full rounded-full object-cover"
               />

@@ -18,7 +18,7 @@ const Attandance = () => {
     setLoading(true);
     let sno = 1;
     try {
-      const response = await axios.get(`https://employee-mg-server.onrender.com/api/attendance`, {
+      const response = await axios.get(`https://hr-tool-716p.onrender.com/api/attendance`, {
         headers: {
           "Authorization": `Bearer ${localStorage.getItem('token')}`
         }

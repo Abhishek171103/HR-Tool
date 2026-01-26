@@ -24,7 +24,7 @@ export const DepartmentButtons = ({ Id, onDepartmentDelete }) => {
         if (confirmDelete) {
             const BASE_URL = import.meta.env.VITE_BASE_URL;
             try {
-                const response = await axios.delete(`https://employee-mg-server.onrender.com/api/department/${id}`, {
+                const response = await axios.delete(`https://hr-tool-716p.onrender.com/api/department/${id}`, {
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem('token')}`
                     }

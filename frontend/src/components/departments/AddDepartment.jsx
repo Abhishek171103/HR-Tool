@@ -18,7 +18,7 @@ const AddDepartment = () => {
         e.preventDefault();
         // const BASE_URL = import.meta.env.VITE_BASE_URL;
         try {
-            const response = await axios.post(`https://employee-mg-server.onrender.com/api/department/add`, department, {
+            const response = await axios.post(`https://hr-tool-716p.onrender.com/api/department/add`, department, {
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem('token')}`
                 }

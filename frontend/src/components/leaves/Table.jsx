@@ -11,7 +11,7 @@ const Table = () => {
     try {
       let sno = 1;
       // const BASE_URL = import.meta.env.VITE_BASE_URL;
-      const response = await axios.get(`https://employee-mg-server.onrender.com/api/leave`, {
+      const response = await axios.get(`https://hr-tool-716p.onrender.com/api/leave`, {
         headers: {
           "Authorization": `Bearer ${localStorage.getItem('token')}`
         }

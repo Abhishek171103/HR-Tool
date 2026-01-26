@@ -15,7 +15,7 @@ const Login = () => {
     e.preventDefault()
     // const BASE_URL = import.meta.env.VITE_BASE_URL;
     try {
-      const response = await axios.post(`https://employee-mg-server.onrender.com/api/auth/login`, { email, password })
+      const response = await axios.post(`https://hr-tool-716p.onrender.com/api/auth/login`, { email, password })
 
       if (response.data.success) {
         login(response.data.user)

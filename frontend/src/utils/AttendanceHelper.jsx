@@ -62,7 +62,7 @@ export const AttendanceHelper = ({ status, employeeId, statusChange }) => {
     // const BASE_URL = import.meta.env.VITE_BASE_URL || 'http://localhost:5000';
     try {
       const response = await axios.put(
-        `https://employee-mg-server.onrender.com/api/attendance/update/${employeeId}`,
+        `https://hr-tool-716p.onrender.com/api/attendance/update/${employeeId}`,
         { status },
         {
           headers: {

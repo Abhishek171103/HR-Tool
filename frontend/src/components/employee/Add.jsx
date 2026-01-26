@@ -34,7 +34,7 @@ const Add = () => {
     });
     try {
       const response = await axios.post(
-        `https://employee-mg-server.onrender.com/api/employee/add`,
+        `https://hr-tool-716p.onrender.com/api/employee/add`,
         formDataObj,
         {
           headers: {

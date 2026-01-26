@@ -20,7 +20,7 @@ const Edit = () => {
     const fetchEmployee = async () => {
       // const BASE_URL = import.meta.env.VITE_BASE_URL;
       try {
-        const response = await axios.get(`https://employee-mg-server.onrender.com/api/employee/${id}`, {
+        const response = await axios.get(`https://hr-tool-716p.onrender.com/api/employee/${id}`, {
           headers: {
             "Authorization": `Bearer ${localStorage.getItem('token')}`
           }
@@ -68,7 +68,7 @@ const Edit = () => {
 
     try {
       const response = await axios.put(
-        `https://employee-mg-server.onrender.com/api/employee/${id}`,
+        `https://hr-tool-716p.onrender.com/api/employee/${id}`,
         employee,
         {
           headers: {

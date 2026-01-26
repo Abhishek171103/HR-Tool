@@ -16,7 +16,7 @@ const List = () => {
     // const BASE_URL = import.meta.env.VITE_BASE_URL;
     try {
       const response = await axios.get(
-        `https://employee-mg-server.onrender.com/api/leave/${employeeId}`,
+        `https://hr-tool-716p.onrender.com/api/leave/${employeeId}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

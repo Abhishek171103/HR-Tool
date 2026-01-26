@@ -62,7 +62,7 @@ export const columns = [
 export const fetchDepartments = async () => {
     const BASE_URL = import.meta.env.VITE_BASE_URL;
     try {
-        const response = await axios.get(`https://employee-mg-server.onrender.com/api/department`, {
+        const response = await axios.get(`https://hr-tool-716p.onrender.com/api/department`, {
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem('token')}`
             }
@@ -77,7 +77,7 @@ export const fetchDepartments = async () => {
 export const getEmployees = async (id) => {
     const BASE_URL = import.meta.env.VITE_BASE_URL;
     try {
-        const response = await axios.get(`https://employee-mg-server.onrender.com/api/employee/department/${id}`, {
+        const response = await axios.get(`https://hr-tool-716p.onrender.com/api/employee/department/${id}`, {
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem('token')}`
             }
