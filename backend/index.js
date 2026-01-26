@@ -12,16 +12,19 @@ import dashboardRoute from './routes/dashboard.js'
 import attendanceRoute from './routes/attendance.js'
 
 dotenv.config();
+connectDB();
 const app = express();
 
 app.use(
     cors({
         origin: ["https://mini-hr-tool.netlify.app", "http://localhost:5173"],
-        // methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-        // allowedHeaders: ["Content-Type", "Authorization"],
+        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        allowedHeaders: ["Content-Type", "Authorization"],
         credentials: true,
     })
 );
+
+app.options("*", cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public/uploads'));
@@ -35,7 +38,6 @@ app.use('/api/setting', settingRoute);
 app.use('/api/dashboard', dashboardRoute);
 app.use('/api/attendance', attendanceRoute);
 
-connectDB();
 app.listen(process.env.PORT, () => {
     console.log(`🚀 Server is running on port ${process.env.PORT}`);
 });
