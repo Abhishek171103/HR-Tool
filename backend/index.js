@@ -17,8 +17,7 @@ const app = express();
 
 app.use(
     cors({
-        // origin: ["https://employeemsrk.netlify.app", "http://localhost:5173"],
-        origin: "http://localhost:5173",
+        origin: ["https://mini-hr-tool.netlify.app", "http://localhost:5173"],
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
         credentials: true,
     })
