@@ -1,5 +1,4 @@
 import React from 'react'
-import './App.css'
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from './pages/Login';
 import AdminDashboard from './pages/AdminDashboard';
