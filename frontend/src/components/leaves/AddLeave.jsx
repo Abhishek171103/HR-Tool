@@ -17,7 +17,7 @@ const AddLeave = () => {
     e.preventDefault();
     try {
       const fetchEmployee = async () => {
-        const BASE_URL = import.meta.env.VITE_BASE_URL;
+        // const BASE_URL = import.meta.env.VITE_BASE_URL;
         try {
           const response = await axios.post(
             `https://hr-tool-716p.onrender.com/api/leave/add`,

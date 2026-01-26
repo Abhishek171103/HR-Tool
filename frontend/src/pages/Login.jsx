@@ -18,8 +18,13 @@ const Login = () => {
       const response = await axios.post(`https://hr-tool-716p.onrender.com/api/auth/login`, { email, password })
 
       if (response.data.success) {
-        login(response.data.user)
-        localStorage.setItem("token", response.data.token)
+        login({
+          ...response.data.user,
+          token: response.data.token,
+          refreshToken: response.data.refreshToken,
+        })
+        // login(response.data.user)
+        // localStorage.setItem("token", response.data.token)
         if(response.data.user.role == "admin"){
           navigate('/admin-dashboard')
         }else{

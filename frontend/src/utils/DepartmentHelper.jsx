@@ -22,7 +22,7 @@ export const DepartmentButtons = ({ Id, onDepartmentDelete }) => {
     const handleDelete = async (id) => {
         const confirmDelete = window.confirm("Do you want to delete?");
         if (confirmDelete) {
-            const BASE_URL = import.meta.env.VITE_BASE_URL;
+            // const BASE_URL = import.meta.env.VITE_BASE_URL;
             try {
                 const response = await axios.delete(`https://hr-tool-716p.onrender.com/api/department/${id}`, {
                     headers: {
