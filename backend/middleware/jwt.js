@@ -22,5 +22,5 @@ export const jwtAuthMiddleware = (req, res, next) => {
 export const generateToken = (user) => {
   const payload = { id: user.id, email: user.email, role: user.role };
   // Access token valid for 1 hour (adjust as needed)
-  return jwt.sign(payload, process.env.JWT_SECRET || "default_secret", { expiresIn: "1h" });
+  return jwt.sign(payload, process.env.JWT_SECRET || "default_secret", { expiresIn: "7d" });
 };
